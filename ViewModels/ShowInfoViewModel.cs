@@ -5,11 +5,12 @@ using LAB02.Tools.Navigation;
 
 namespace LAB02.ViewModels
 {
-    class ShowInfoViewModel: BaseViewModel
+    class ShowInfoViewModel : BaseViewModel
     {
         #region Fields
 
         private Person _person = StationManager.CurrentPerson;
+        private RelayCommand<object> _backCommand;
 
         #endregion
 
@@ -17,8 +18,6 @@ namespace LAB02.ViewModels
         {
             get { return _person; }
         }
-
-        private RelayCommand<object> _backCommand;
 
         public RelayCommand<Object> BackCommand
         {

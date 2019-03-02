@@ -22,25 +22,25 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Name" Grid.Row="0" Grid.Column="0"></TextBlock>
-        <TextBlock Text="Surname" Grid.Row="1" Grid.Column="0"></TextBlock>
-        <TextBlock Text="Email" Grid.Row="2"  Grid.Column="0"></TextBlock>
-        <TextBlock Text="Birthday" Grid.Row="3" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Name:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+        <TextBlock Text="Surname:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+        <TextBlock Text="Email:" Grid.Row="2"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+        <TextBlock Text="Birthday:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
 
-        <TextBlock Text="IsAdult" Grid.Row="0" Grid.Column="3"></TextBlock>
-        <TextBlock Text="SunSign" Grid.Row="1" Grid.Column="3"></TextBlock>
-        <TextBlock Text="ChineseSign" Grid.Row="2" Grid.Column="3"></TextBlock>
-        <TextBlock Text="IsBirthday" Grid.Row="3" Grid.Column="3"></TextBlock>
+        <TextBlock Text="IsAdult:" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+        <TextBlock Text="SunSign:" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+        <TextBlock Text="ChineseSign:" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+        <TextBlock Text="IsBirthday:" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
 
-        <TextBlock Text="{Binding MyPerson.Name}" Grid.Column="1" Grid.Row="0"></TextBlock>
-        <TextBlock Text="{Binding MyPerson.Surname}" Grid.Column="1" Grid.Row="1"></TextBlock>
-        <TextBlock Text="{Binding MyPerson.Email}" Grid.Column="1" Grid.Row="2"></TextBlock>
-        <TextBlock Text="{Binding MyPerson.BirthdayString}" Grid.Column="1" Grid.Row="3"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.Name}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.Surname}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.Email}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.BirthdayString}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
 
-        <TextBlock Text="{Binding MyPerson.IsAdult}" Grid.Column="4" Grid.Row="0"></TextBlock>
-        <TextBlock Text="{Binding MyPerson.SunSign}" Grid.Column="4" Grid.Row="1"></TextBlock>
-        <TextBlock Text="{Binding MyPerson.ChineseSign}" Grid.Column="4" Grid.Row="2"></TextBlock>
-        <TextBlock Text="{Binding MyPerson.IsBirthday}" Grid.Column="4" Grid.Row="3"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.IsAdult}" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.SunSign}" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.ChineseSign}" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.IsBirthday}" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
         <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5" Margin="15" Content="Back" Command="{Binding BackCommand}"></Button>
     </Grid>
 </UserControl>

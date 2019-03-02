@@ -13,16 +13,19 @@ namespace LAB02
     class Person : INotifyPropertyChanged
     {
         #region Fields
+
         private string _name;
         private string _surname;
         private string _email;
         private DateTime _birthday;
+
         #endregion
 
         #region Properties
+
         public string Name
         {
-            get { return _name;}
+            get { return _name; }
             set
             {
                 _name = value;
@@ -39,6 +42,7 @@ namespace LAB02
                 OnPropertyChanged();
             }
         }
+
         public string Email
         {
             get { return _email; }
@@ -52,8 +56,8 @@ namespace LAB02
         public string BirthdayString
         {
             get { return _birthday.ToShortDateString(); }
-
         }
+
         public DateTime Birthday
         {
             get { return _birthday; }
@@ -63,10 +67,12 @@ namespace LAB02
                 OnPropertyChanged();
                 OnPropertyChanged("IsAdult");
                 OnPropertyChanged("IsBirthday");
+                OnPropertyChanged("BirthdayString");
                 OnPropertyChanged("SunSign");
                 OnPropertyChanged("ChineseSign");
             }
         }
+
         #endregion
 
         #region Constructors
@@ -87,7 +93,7 @@ namespace LAB02
         }
 
         public Person(string name, string surname, DateTime
- birthday)
+            birthday)
         {
             _name = name;
             _surname = surname;
@@ -182,23 +188,18 @@ namespace LAB02
 
         public bool IsBirthday
         {
-            get
-            {
-                return (_birthday.Day == DateTime.Today.Day) && (_birthday.Month == DateTime.Today.Month);
-            }
+            get { return (_birthday.Day == DateTime.Today.Day) && (_birthday.Month == DateTime.Today.Month); }
         }
 
         public bool IsCorrectAge
         {
-            
-            get
-            {
-                MessageBox.Show(Age.ToString()); return Age >= 0 && Age <= 135; }
+            get { return Age >= 0 && Age <= 135; }
         }
 
         #endregion
 
         #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 
@@ -206,7 +207,7 @@ namespace LAB02
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
 
+        #endregion
     }
 }

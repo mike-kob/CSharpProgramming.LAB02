@@ -63,11 +63,10 @@ namespace LAB02.ViewModels
                 }
                 return true;
             });
-            if(res)
-                NavigationManager.Instance.Navigate(ViewType.ShowInfo);
             LoaderManeger.Instance.HideLoader();
-
-        }
+            if (res)
+                NavigationManager.Instance.Navigate(ViewType.ShowInfo);
+            }
 
         private bool CanExecuteProceed(Object obj)
         {
