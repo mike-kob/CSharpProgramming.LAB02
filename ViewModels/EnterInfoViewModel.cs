@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using LAB02.Tools;
+using LAB02.Tools.Manager;
 using LAB02.Tools.Managers;
 using LAB02.Tools.Navigation;
 
@@ -16,7 +17,6 @@ namespace LAB02.ViewModels
         #region Fields
 
         private Person _person;
-        private bool _dateChosen = false;
 
         private RelayCommand<object> _proceedCommand;
         #endregion
@@ -38,20 +38,25 @@ namespace LAB02.ViewModels
             get
             {
                 return _proceedCommand ?? (_proceedCommand = new RelayCommand<object>(
-                           o =>
-                           {
-                               MessageBox.Show(_person.Name);
-                               StationManager.CurrentPerson = _person;
-                               NavigationManager.Instance.Navigate(ViewType.ShowInfo);
-                           }, CanExecuteProceed));
+                           ProceedImplementation, CanExecuteProceed));
             }
         }
         #endregion
 
+        private async void ProceedImplementation(object obj)
+        {
+            LoaderManeger.Instance.ShowLoader();
+            await Task.Run(() => {
+                StationManager.CurrentPerson = _person;
+            });
+            NavigationManager.Instance.Navigate(ViewType.ShowInfo);
+            LoaderManeger.Instance.HideLoader();
+
+        }
+
         private bool CanExecuteProceed(Object obj)
         {
-            return
-                true; //!String.IsNullOrWhiteSpace(Email) && !String.IsNullOrWhiteSpace(Name) && !String.IsNullOrWhiteSpace(Surname) && _dateChosen;
+            return !String.IsNullOrWhiteSpace(MyPerson.Email) && !String.IsNullOrWhiteSpace(MyPerson.Name) && !String.IsNullOrWhiteSpace(MyPerson.Surname);
         }
     }
 }
