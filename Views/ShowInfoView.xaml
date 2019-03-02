@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="LAB02.Views.ShowInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LAB02.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Name" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Surname" Grid.Row="1" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Email" Grid.Row="2"  Grid.Column="0"></TextBlock>
+        <TextBlock Text="Birthday" Grid.Row="3" Grid.Column="0"></TextBlock>
+
+        <TextBlock Text="IsAdult" Grid.Row="0" Grid.Column="3"></TextBlock>
+        <TextBlock Text="SunSign" Grid.Row="1" Grid.Column="3"></TextBlock>
+        <TextBlock Text="ChineseSign" Grid.Row="2" Grid.Column="3"></TextBlock>
+        <TextBlock Text="IsBirthday" Grid.Row="3" Grid.Column="3"></TextBlock>
+
+        <TextBlock Text="{Binding MyPerson.Name}" Grid.Column="1" Grid.Row="0"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.Surname}" Grid.Column="1" Grid.Row="1"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.Email}" Grid.Column="1" Grid.Row="2"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.Birthday}" Grid.Column="1" Grid.Row="3"></TextBlock>
+
+        <TextBlock Text="{Binding MyPerson.IsAdult}" Grid.Column="4" Grid.Row="0"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.SunSign}" Grid.Column="4" Grid.Row="1"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.ChineseSign}" Grid.Column="4" Grid.Row="2"></TextBlock>
+        <TextBlock Text="{Binding MyPerson.IsBirthday}" Grid.Column="4" Grid.Row="3"></TextBlock>
+        <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5" Margin="15" Content="Back" Command="{Binding BackCommand}"></Button>
+    </Grid>
+</UserControl>
