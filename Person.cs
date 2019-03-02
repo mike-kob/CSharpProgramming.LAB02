@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LAB02
 {
@@ -46,6 +48,12 @@ namespace LAB02
                 OnPropertyChanged();
             }
         }
+
+        public string BirthdayString
+        {
+            get { return _birthday.ToShortDateString(); }
+
+        }
         public DateTime Birthday
         {
             get { return _birthday; }
@@ -54,6 +62,7 @@ namespace LAB02
                 _birthday = Convert.ToDateTime(value);
                 OnPropertyChanged();
                 OnPropertyChanged("IsAdult");
+                OnPropertyChanged("IsBirthday");
                 OnPropertyChanged("SunSign");
                 OnPropertyChanged("ChineseSign");
             }
@@ -177,6 +186,14 @@ namespace LAB02
             {
                 return (_birthday.Day == DateTime.Today.Day) && (_birthday.Month == DateTime.Today.Month);
             }
+        }
+
+        public bool IsCorrectAge
+        {
+            
+            get
+            {
+                MessageBox.Show(Age.ToString()); return Age >= 0 && Age <= 135; }
         }
 
         #endregion

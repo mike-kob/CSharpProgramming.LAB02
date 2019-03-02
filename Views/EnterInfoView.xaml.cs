@@ -2,7 +2,7 @@
 using LAB02.Tools.Navigation;
 using LAB02.ViewModels;
 
-namespace LAB02
+namespace LAB02.Views
 {
     /// <summary>
     /// Interaction logic for EnterInfoControl.xaml

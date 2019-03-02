@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.RightsManagement;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
 using LAB02.Tools;
@@ -46,10 +43,28 @@ namespace LAB02.ViewModels
         private async void ProceedImplementation(object obj)
         {
             LoaderManeger.Instance.ShowLoader();
-            await Task.Run(() => {
+            bool res = await Task.Run(() => {
                 StationManager.CurrentPerson = _person;
+                if (!MyPerson.IsCorrectAge)
+                {
+                    MessageBox.Show("There must be a mistake with your age!");
+                    return false;
+                };
+                if (!new EmailAddressAttribute().IsValid(MyPerson.Email))
+                {
+                    MessageBox.Show("Your email is not valid");
+                    return false;
+                }
+
+                if (MyPerson.IsBirthday)
+                {
+                    MessageBox.Show("Happy Birthday!");
+
+                }
+                return true;
             });
-            NavigationManager.Instance.Navigate(ViewType.ShowInfo);
+            if(res)
+                NavigationManager.Instance.Navigate(ViewType.ShowInfo);
             LoaderManeger.Instance.HideLoader();
 
         }

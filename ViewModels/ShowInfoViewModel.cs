@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LAB02.Tools;
 using LAB02.Tools.Managers;
 using LAB02.Tools.Navigation;
