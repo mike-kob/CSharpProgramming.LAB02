@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LAB02
 {
-    class Person
+    class Person : INotifyPropertyChanged
     {
         #region Fields
         private string _name;
@@ -19,23 +21,42 @@ namespace LAB02
         public string Name
         {
             get { return _name;}
-            set { _name = value; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
         }
 
         public string Surname
         {
             get { return _surname; }
-            set { _surname = value; }
+            set
+            {
+                _surname = value;
+                OnPropertyChanged();
+            }
         }
         public string Email
         {
             get { return _email; }
-            set { _email = value; }
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
         }
         public DateTime Birthday
         {
             get { return _birthday; }
-            set { _birthday = Convert.ToDateTime(value); }
+            set
+            {
+                _birthday = Convert.ToDateTime(value);
+                OnPropertyChanged();
+                OnPropertyChanged("IsAdult");
+                OnPropertyChanged("SunSign");
+                OnPropertyChanged("ChineseSign");
+            }
         }
         #endregion
 
@@ -158,6 +179,16 @@ namespace LAB02
             }
         }
 
+        #endregion
+
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         #endregion
 
     }
