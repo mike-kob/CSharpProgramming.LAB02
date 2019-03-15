@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
+using LAB02.Tools.Exceptions;
 
 namespace LAB02
 {
@@ -191,11 +187,6 @@ namespace LAB02
             get { return (_birthday.Day == DateTime.Today.Day) && (_birthday.Month == DateTime.Today.Month); }
         }
 
-        public bool IsCorrectAge
-        {
-            get { return Age >= 0 && Age <= 135; }
-        }
-
         #endregion
 
         #region INotifyPropertyChanged
@@ -209,5 +200,26 @@ namespace LAB02
         }
 
         #endregion
+
+        public void ValidatePerson()
+        {
+            if (Age < 0)
+            {
+                throw new PersonNotBornException();
+            }
+
+            if (Age > 135)
+            {
+                throw new PersonTooOldException();
+            }
+
+            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            if (!emailRegex.IsMatch(_email))
+            {
+                throw new InvalidEmailException(_email);
+            }
+
+            
+        }
     }
 }

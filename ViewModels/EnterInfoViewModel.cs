@@ -1,8 +1,8 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
 using LAB02.Tools;
+using LAB02.Tools.Exceptions;
 using LAB02.Tools.Manager;
 using LAB02.Tools.Managers;
 using LAB02.Tools.Navigation;
@@ -45,21 +45,25 @@ namespace LAB02.ViewModels
             LoaderManeger.Instance.ShowLoader();
             bool res = await Task.Run(() => {
                 StationManager.CurrentPerson = _person;
-                if (!MyPerson.IsCorrectAge)
+
+                try
                 {
-                    MessageBox.Show("There must be a mistake with your age!");
-                    return false;
-                };
-                if (!new EmailAddressAttribute().IsValid(MyPerson.Email))
+                    StationManager.CurrentPerson.ValidatePerson();
+                }
+                catch (PersonNotBornException e)
                 {
-                    MessageBox.Show("Your email is not valid");
+                    MessageBox.Show($"Mistake with age: {e.Message}");
                     return false;
                 }
-
-                if (MyPerson.IsBirthday)
+                catch (PersonTooOldException e)
                 {
-                    MessageBox.Show("Happy Birthday!");
-
+                    MessageBox.Show($"Mistake with age: {e.Message}");
+                    return false;
+                }
+                catch (InvalidEmailException e)
+                {
+                    MessageBox.Show($"Mistake with email: {e.Message}");
+                    return false;
                 }
                 return true;
             });
